@@ -1,6 +1,10 @@
 #include <iostream>
+#include <vector>
+#include "timecalc.h"
+#include "util.h"
 
 int main()
 {
-	std::cout << LOG_LOC << std::endl;
+	systime.set_current_time();
+	std::cout << systime.get_component("mday") << std::endl;
 }
