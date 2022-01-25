@@ -1,7 +1,7 @@
 #include <string>
 #pragma once
 
-class time_data
+class Time_data
 {
 	private:
 		int year;

@@ -3,9 +3,9 @@
 #include "util.h"
 #include "timecalc.h"
 
-time_data systime;
+Time_data systime;
 
-void time_data::set_current_time()
+void Time_data::set_current_time()
 {
 	time_t epoch = time(NULL);
 	struct tm *s = localtime(&epoch);
@@ -18,10 +18,10 @@ void time_data::set_current_time()
 	second = s->tm_sec;
 }
 
-int time_data::get_component(std::string cname)
+int Time_data::get_component(std::string cname)
 {
 	std::vector<std::string> poss = {"year", "month", "mday", "hour", "minute", "second"};
-	int val = veccmp<std::string>(cname, poss);
+	int val = util.veccmp<std::string>(cname, poss);
 	 
 	switch (val)
 	{

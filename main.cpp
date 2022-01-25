@@ -2,9 +2,11 @@
 #include <vector>
 #include "timecalc.h"
 #include "util.h"
+#include "args.h"
 
-int main()
+int main(int argc, char *argv[])
 {
 	systime.set_current_time();
-	std::cout << systime.get_component("mday") << std::endl;
+	args.process_args(argc, argv);
+	std::cout << "Message: " << args.get_message() << "; Tag: " << args.get_tag() << std::endl;
 }

@@ -4,7 +4,7 @@ BINNAME=userlog
 
 CC=g++
 
-SRC=main.cpp timecalc.cpp util.cpp
+SRC=main.cpp timecalc.cpp util.cpp args.cpp
 
 build:
 	${CC} -o ${BINNAME} ${SRC} -DLOG_LOC=\"${LOG_LOC}\"
