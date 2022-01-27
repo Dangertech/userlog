@@ -20,6 +20,7 @@ class Util
 			return ERROR;
 		}
 		 
+		// Match against the beginning of a string: Is against at the beginning of to_comp?
 		bool begmatch(const char* to_comp, const char* against);
 } extern util;
 

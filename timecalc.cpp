@@ -10,7 +10,7 @@ void Time_data::set_current_time()
 	time_t epoch = time(NULL);
 	struct tm *s = localtime(&epoch);
 
-	year = s->tm_year;
+	year = s->tm_year + 1900; // Gives year since 1900, so add those
 	month = s->tm_mon;
 	mday = s->tm_mday;
 	hour = s->tm_hour;
