@@ -5,6 +5,7 @@
 #include "timecalc.h"
 #include "file.h"
 #include "const.h"
+#include "util.h"
 
 File file;
 
@@ -28,17 +29,33 @@ std::string File::get_logname(Time_data time)
 
 int File::make_dirs(std::string dir)
 {
-	// TODO
+	std::cout << dir << std::endl;
+	std::vector<std::string> split = util.split(dir, '/');
+	std::string cur_path = "/" + split[1];
+	mkdir(cur_path.c_str(), 0777);
+	for (int i = 2; i<split.size(); i++)
+	{
+		/* Always try to make the directories, even if they exist
+		 * because it doesn't change anything,
+		 * mkdir() just silently fails
+		 */
+		cur_path += "/" + split[i];
+		std::cout << cur_path << std::endl;
+		mkdir(cur_path.c_str(), 0777);
+	}
 	return ERROR;
 }
 
 int File::write_entry(Args my_arg)
 {
 	std::string location = get_logdir(systime) + "/" + get_logname(systime);
+	/* Create needed directories */
 	make_dirs(get_logdir(systime));
-	std::ofstream logfile(location);
+	/* Open File in append mode */
+	std::ofstream logfile(location, std::ios_base::app);
 	if (logfile.is_open())
 	{
+		/* Write! */
 		logfile << my_arg.get_message() << std::endl;
 	}
 	else
