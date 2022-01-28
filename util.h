@@ -19,6 +19,9 @@ class Util
 			}
 			return ERROR;
 		}
+
+		std::vector<std::string> split(std::string input, char breaker, 
+				bool exclude_breaker = true/*, bool right_breaker = false*/);
 		 
 		// Match against the beginning of a string: Is against at the beginning of to_comp?
 		bool begmatch(const char* to_comp, const char* against);
