@@ -1,5 +1,5 @@
 # Logging folder
-LOG_LOC=/home/dangertech/userlog
+LOG_LOC=/var/log/userlog
 BINNAME=userlog
 
 CC=g++
@@ -7,8 +7,10 @@ CC=g++
 SRC=main.cpp timecalc.cpp util.cpp args.cpp file.cpp
 
 build:
-	${CC} -o ${BINNAME} ${SRC} -DLOG_LOC=\"${LOG_LOC}\"
-
+	${CC} -o ${BINNAME} ${SRC} -DLOG_LOC=\"${LOG_LOC}\" 
 
 install: build
 	cp -f ${BINNAME} /usr/local/bin
+
+debug:
+	${CC} -o ${BINNAME} ${SRC} -DLOG_LOC=\"${LOG_LOC}\" -ggdb
