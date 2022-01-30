@@ -17,8 +17,9 @@ std::string File::get_logdir(Time_data time)
 	my_loc += "/" + std::to_string(time.get_component("year"));
 	my_loc += "/" + std::to_string(time.get_component("month"));
 	/* Gives something like:
-	 * /var/log/userlog/2022/0/3.log
+	 * /var/log/userlog/2022/0/
 	 * Log of the third of January 2022
+	 * Final logfile name (3.log) should be appended by File::get_logname()
 	 */
 	return my_loc;
 }
@@ -78,7 +79,11 @@ int File::write_entry(Args my_arg)
 {
 	if (my_arg.get_message() == "")
 		return ERR_NO_IPT;
-	std::string location = get_logdir(systime) + "/" + get_logname(systime);
+	std::string location;
+	if (my_arg.get_set_dest() == "")
+		location = get_logdir(systime) + "/" + get_logname(systime);
+	else
+		location = my_arg.get_set_dest();
 	/* Create needed directories */
 	make_dirs(get_logdir(systime));
 	/* Open File in append mode */

@@ -10,6 +10,12 @@ void Args::handle_tag(int &arg_pos, int argc, char * argv[])
 	tag = argv[arg_pos];
 }
 
+void Args::handle_dest(int &arg_pos, int argc, char * argv[])
+{
+	arg_pos++;
+	set_dest = argv[arg_pos];
+}
+
 void Args::show_help()
 {
 	std::cout
@@ -52,6 +58,9 @@ void Args::process_args(int argc, char *argv[])
 				case 1:
 					show_help();
 					break;
+				case 2:  // --dest
+					handle_dest(i, argc, argv);
+					break;
 			}
 		}
 		else if (util.begmatch(argv[i], "-"))
@@ -64,6 +73,9 @@ void Args::process_args(int argc, char *argv[])
 					break;
 				case 1:
 					show_help();
+					break;
+				case 2: // -d
+					handle_dest(i, argc, argv);
 					break;
 			}
 		}

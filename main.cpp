@@ -15,7 +15,10 @@ int main(int argc, char *argv[])
 			return 0;
 			break;
 		case ERROR:
-			std::cout << "userlog: Couldn't open log file! Please check the privileges of your userlog location: " << LOG_LOC << std::endl;
+			if (args.get_set_dest() == "")
+				std::cout << "userlog: Couldn't open log file! Please check the privileges of your userlog location: " << LOG_LOC << std::endl;
+			else
+				std::cout << "userlog: The set destination file is not writable! This file could not be accessed: " << args.get_set_dest() << std::endl;
 			return -1;
 		case ERR_NO_IPT:
 			std::cout << "userlog: A message is required" << std::endl;
