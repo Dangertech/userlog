@@ -9,12 +9,14 @@ class Args
 		std::string tag;
 		std::vector <std::string> lswitches =
 		{
-			"--tag"
+			"--tag",
+			"--help"
 		};
 		 
 		std::vector <std::string> sswitches =
 		{
-			"-t"
+			"-t",
+			"-h"
 		};
 		 
 		/* Argument handlers: Get attached arguments to argument and dispatch the
@@ -22,6 +24,7 @@ class Args
 		 * processed
 		 */
 		void handle_tag(int &arg_pos, int argc, char * argv[]);
+		void show_help();
 	public:
 		// Goes through all given arguments, called from main
 		void process_args(int argc, char *argv[]);
