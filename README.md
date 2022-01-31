@@ -3,9 +3,9 @@ An easy-to-use logger for human beings
 
 ## What.
 userlog allows you to easily log the activity of your shell scripts in a
-simple, human-readable format. It is meant to be used in environments you
+**simple, human-readable format**. It is meant to be used in environments you
 leave alone for a long time and want to make sure everything executes correctly.
-I personally use it to log the activity of my Raspberry Pi and created it for
+I personally use it to log the activity of my **Raspberry Pi** and created it for
 exactly that purpose.
 
 ## Usage.
@@ -43,7 +43,7 @@ The output then becomes
 
 	<hh:mm:ss> [My Awesome Tag]: My Awesome Message
 
-If you don't want to use this filesystem you can also declare your own file(path):
+If you don't want to use this filesystem you can also **declare your own file(path)**:
 `userlog --dest /home/user/mylog.log "Amazing Message on my home directory"`
 
 ## Install.

@@ -19,7 +19,7 @@ void Args::handle_dest(int &arg_pos, int argc, char * argv[])
 void Args::show_help()
 {
 	std::cout
-		<< "Usage: userlog [OPTION] MESSAGE\n"
+		<< "Usage: userlog [OPTIONS] MESSAGE\n"
 		<< "An easy-to-use logger for human beings\n"
 		<< "\n"
 		<< "OPTIONs:\n"
