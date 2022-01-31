@@ -25,13 +25,15 @@ void Args::show_help()
 		<< "OPTIONs:\n"
 		<< "    --tag/-t TAG(s)     Puts the given tags in square brackets in front of your message\n"
 		<< "    --help/-h           Shows this help text and then terminates the program\n"
+		<< "    --dest/-d           Set your own destination for this log entry\n"
+		<< "                            If the path doesn't fully exist, userlog will try to create it\n"
 		<< "\n"
 		<< "EXIT CODES:\n"
 		<< "    0                   userlog only returns 0 if a message was written to the log file.\n"
 		<< "    1                   This help text was shown\n"
-		<< "    -1                  The log destination couldn't be opened;\n"
+		<< "    2                   The log destination couldn't be opened;\n"
 		<< "                            Check if userlog has the sufficient privileges to write to it\n"
-		<< "    -2                  No message was given\n"
+		<< "    3                   No message was given\n"
 		<< "\n"    
 		<< "You can choose the directory in which userlog puts the logs at compile time by changing\n"
 		<< "the variable 'LOG_LOC' at the top of the Makefile and issuing 'sudo make install' again.\n"
@@ -58,7 +60,7 @@ void Args::process_args(int argc, char *argv[])
 				case 1:
 					show_help();
 					break;
-				case 2:  // --dest
+				case 2: // --dest
 					handle_dest(i, argc, argv);
 					break;
 			}
